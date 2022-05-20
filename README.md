@@ -2,3 +2,14 @@
 This is a website built using Django framework and Bootstrap as frontend.
 
 This blog application allows users to create, edit and delete posts. Moderate comments and visitors will can send messages to the admin.
+
+# Requirements
+[Python 3.6](https://www.python.org/) or later  
+[Django Framework](https://www.djangoproject.com/)  
+[Django Summernote](https://github.com/summernote/django-summernote)
+
+
+# Setup
+
+`pip install Django`  
+`pip install django-summernote  `
