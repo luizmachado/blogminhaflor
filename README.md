@@ -2,7 +2,7 @@
 
 This is a website built using Django framework and Bootstrap as frontend.
 
-This blog application allows users to create, edit and delete posts. Moderate comments and visitors will be able
+This blog application allows users to create, edit and delete posts, moderate comments and visitors will be able
 to send messages to the admin.
 
 # Requirements
