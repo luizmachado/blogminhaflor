@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'posts',
     'categorias',
     'comentarios',
+    'django_summernote',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
