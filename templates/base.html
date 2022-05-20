@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <title>{% block titulo %} {%endblock%} Blog Minha Flor T-Shirts</title>
+    {% include 'parciais/_header.html' %}
+
+</head>
+
+<body>
+
+{% include 'parciais/_navbar.html' %}
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            {% block conteudo %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+{% include 'parciais/_footer.html' %}
+
+</body>
+
+</html>
