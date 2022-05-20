@@ -7,9 +7,12 @@ This blog application allows users to create, edit and delete posts. Moderate co
 [Python 3.6](https://www.python.org/) or later  
 [Django Framework](https://www.djangoproject.com/)  
 [Django Summernote](https://github.com/summernote/django-summernote)
+[Pillow](https://pillow.readthedocs.io/en/stable/)
+[MysqlClient](https://github.com/PyMySQL/mysqlclient)
 
 
 # Setup
-
 `pip install Django`  
 `pip install django-summernote  `
+`pip install pillow`  
+`pip install mysqlclient`  
