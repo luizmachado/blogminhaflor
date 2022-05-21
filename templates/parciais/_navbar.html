@@ -8,20 +8,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Moda</a>
+                    <a class="nav-link" href="{% url 'post_category' 'Moda' %}">Moda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Saúde</a>
+                    <a class="nav-link" href="{% url 'post_category' 'Saúde' %}">Saúde</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Espiritualidade</a>
+                    <a class="nav-link" href="{% url 'post_category' 'Espiritualidade' %}">Espiritualidade</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Curiosidades</a>
+                    <a class="nav-link" href="{% url 'post_category' 'Curiosidades' %}">Curiosidades</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0 ml-lg-4" action="/busca/">
-                <input name="termo" value="" class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
+            <form class="form-inline my-2 my-lg-0 ml-lg-4" action="{% url 'post_search' %}">
+                <input name="termo" value="{{ request.GET.termo }}" class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
                        aria-label="Search">
             </form>
         </div>
