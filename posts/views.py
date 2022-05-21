@@ -31,7 +31,15 @@ class PostSearch(PostIndex):
 
 
 class PostCategory(PostIndex):
-    pass
+    template_name = 'posts/post_category.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        category = self.kwargs.get('category', None)
+        if not category:
+            return qs
+        qs = qs.filter(post_category__cat_name__iexact=category)
+        return qs
 
 
 class PostDetails(UpdateView):
