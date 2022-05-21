@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block titulo %} {{ post.post_title }} | {% endblock %}
+
+
+{% block conteudo %}
+
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8 text-center">
+            <h2>{{ post.post_title }}</h2>
+            <h5>{{ post.post_brief }}</h5>
+            <p class="text-muted mt-4">
+                <small>
+                    {{ post.post_author.first_name }} | {{ post.post_date }} | {{ post.post_category }}
+                </small>
+            </p>
+        </div>
+        <div class="col-xl"></div>
+    </div>
+
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+            {% if post.post_image %}
+            <img class="img-fluid pb-5 " src="{{ post.post_image.url }}" alt="{{ post.post_title }}">
+            {% endif %}
+
+            {{ post.post_content|safe }}
+
+        </div>
+        <div class="col-xl"></div>
+    </div>
+
+
+    {% if comments %}
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+            <h2 class="my-3">Comentários ({{ comments.count }})</h2>
+
+
+            {% for comment in comments %}
+            <h5 class="mb-2 mt-5">{{ comment.comment_name }}:</h5>
+            <small class="text-muted">{{ comment.comment_date }}</small>
+            <p class="mb-1">{{ comment.comment }}</p>
+            {% endfor %}
+
+
+        </div>
+        <div class="col-xl"></div>
+    </div>
+    {% endif %}
+
+
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+            <h2 class="my-3">Deixe um comentário</h2>
+            <form method="POST" action="#envia_comentario">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                       value="MUiT5cD1u7raeEOr9w9srr4cbQkYc5OTRnWT1cZcIiYWXL8cJqmAl9bxFc7j26yn">
+                <table class="table">
+                    <tr>
+                        <th><label for="id_author_name">Nome:</label></th>
+                        <td><input type="text" name="author_name" maxlength="255" required
+                                   id="id_author_name"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_email">Email:</label></th>
+                        <td><input type="email" name="email" maxlength="254" required id="id_email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_comment">Comentário:</label></th>
+                        <td><textarea name="comment" id="id_comment"></textarea></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <input id="envia_comentario" type="submit" class="btn btn-primary" value="Enviar">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+
+        </div>
+        <div class="col-xl"></div>
+    </div>
+</div>
+
+
+{% endblock %}
