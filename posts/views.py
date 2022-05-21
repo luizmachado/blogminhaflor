@@ -14,7 +14,7 @@ class PostIndex(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.order_by('-id')
+        qs = qs.order_by('-id').filter(post_published=True)
         # Count only comments published
         qs = qs.annotate(
             comment_count=Count(
