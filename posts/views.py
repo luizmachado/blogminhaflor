@@ -27,7 +27,19 @@ class PostIndex(ListView):
 
 
 class PostSearch(PostIndex):
-    pass
+    template_name = 'posts/post_search.html'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        termo = self.request.GET.get('termo')
+        qs = qs.filter(
+            Q(post_title__icontains=termo) |
+            Q(post_author__first_name__icontains=termo) |
+            Q(post_brief__icontains=termo) |
+            Q(post_content__icontains=termo) |
+            Q(post_category__cat_name__icontains=termo)
+        )
+        return qs
 
 
 class PostCategory(PostIndex):

@@ -20,8 +20,8 @@
                     <a class="nav-link" href="{% url 'post_category' 'Curiosidades' %}">Curiosidades</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0 ml-lg-4" action="/busca/">
-                <input name="termo" value="" class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
+            <form class="form-inline my-2 my-lg-0 ml-lg-4" action="{% url 'post_search' %}">
+                <input name="termo" value="{{ request.GET.termo }}" class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
                        aria-label="Search">
             </form>
         </div>
