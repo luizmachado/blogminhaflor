@@ -11,7 +11,7 @@ class PostIndex(ListView):
     model = Post
     template_name = 'posts/index.html'
     context_object_name = 'posts'
-    paginate_by = 3
+    paginate_by = 6
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -78,4 +78,4 @@ class PostDetails(UpdateView):
             comment.comment_user = self.request.user
 
         comment.save()
-        return redirect('post_detail', pk=post.id)
+        return redirect('post_details', pk=post.id)

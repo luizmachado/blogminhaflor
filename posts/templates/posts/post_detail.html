@@ -56,26 +56,11 @@
     <div class="row pt-5">
         <div class="col-xl"></div>
         <div class="col-xl-8">
-            <h2 class="my-3">Deixe um comentário</h2>
+            <h2 class="my-3">Deixe seu comentário</h2>
             <form method="POST" action="#envia_comentario">
-                <input type="hidden" name="csrfmiddlewaretoken"
-                       value="MUiT5cD1u7raeEOr9w9srr4cbQkYc5OTRnWT1cZcIiYWXL8cJqmAl9bxFc7j26yn">
+                {% csrf_token %}
                 <table class="table">
-                    <tr>
-                        <th><label for="id_author_name">Nome:</label></th>
-                        <td><input type="text" name="author_name" maxlength="255" required
-                                   id="id_author_name"></td>
-                    </tr>
-                    <tr>
-                        <th><label for="id_email">Email:</label></th>
-                        <td><input type="email" name="email" maxlength="254" required id="id_email">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="id_comment">Comentário:</label></th>
-                        <td><textarea name="comment" id="id_comment"></textarea></td>
-                    </tr>
-
+                    {{ form }}
                     <tr>
                         <td colspan="2">
                             <input id="envia_comentario" type="submit" class="btn btn-primary" value="Enviar">
