@@ -5,6 +5,7 @@ from .models import Post
 from comentarios.models import Comment
 from django.db.models import Q, Count, Case, When
 from comentarios.forms import FormComment
+from django.db import connection
 
 
 class PostIndex(ListView):
@@ -15,6 +16,7 @@ class PostIndex(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
+        qs = qs.select_related('post_category')
         qs = qs.order_by('-id').filter(post_published=True)
         # Count only comments published
         qs = qs.annotate(
