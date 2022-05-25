@@ -51,6 +51,7 @@
                         <div class="card-footer text-muted h6">
                             {{ comment.comment_date }}
                         </div>
+                    </blockquote>
                 </div>
             </div>
             <br>
@@ -69,14 +70,17 @@
             <h2 class="my-3">Deixe seu comentário</h2>
             <form method="POST" action="#envia_comentario">
                 {% csrf_token %}
-                <table class="table">
-                    {{ form }}
-                    <tr>
-                        <td colspan="2">
-                            <input id="envia_comentario" type="submit" class="btn btn-primary" value="Enviar">
-                        </td>
-                    </tr>
-                </table>
+                {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+                {% endfor %}
+                {% for visible_field in form.visible_fields %}
+                <div class="form-group">
+                    {{ visible_field.label_tag }} <br>
+                    {{ visible_field }}
+                    {{ visible_field.errors }}
+                </div>
+                {% endfor %}
+                <input id="envia_comentario" type="submit" class="btn btn-primary" value="Enviar">
             </form>
 
 
