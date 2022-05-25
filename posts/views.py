@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
 from django.views.generic.list import ListView
-from django.views.generic.edit import UpdateView
 from .models import Post
 from comentarios.models import Comment
 from django.db.models import Q, Count, Case, When
 from comentarios.forms import FormComment
-from django.db import connection
+from django.views import View
+from django.contrib import messages
 
 
 class PostIndex(ListView):
@@ -57,27 +58,35 @@ class PostCategory(PostIndex):
         return qs
 
 
-class PostDetails(UpdateView):
+class PostDetails(View):
     template_name = 'posts/post_detail.html'
-    model = Post
-    context_object_name = 'post'
-    form_class = FormComment
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        post = self.get_object()
-        comments = Comment.objects.filter(comment_published=True,
-                                          comment_post=post.id)
-        context['comments'] = comments
-        return context
+    # Method used to share attributes between this views methods
+    def setup(self, request, *args, **kwargs):
+        super().setup(request, *args, **kwargs)
 
-    def form_valid(self, form):
-        post = self.get_object()
-        comment = Comment(**form.cleaned_data)
-        comment.comment_post = post
+        pk = self.kwargs.get('pk')
+        post = get_object_or_404(Post, pk=pk, post_published=True)
+        self.context = {
+            'post': post,
+            'comments': Comment.objects.filter(comment_post=post, comment_published=True),
+            'form': FormComment(request.POST or None),
+        }
 
-        if self.request.user.is_authenticated:
-            comment.comment_user = self.request.user
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, self.context)
 
+    def post(self, request, *args, **kwargs):
+        form = self.context['form']
+
+        if not form.is_valid():
+            return render(request, self.template_name, self.context)
+        comment = form.save(commit=False)
+
+        if request.user.is_authenticated:
+            comment.comment_user = request.user
+
+        comment.comment_post = self.context['post']
         comment.save()
-        return redirect('post_details', pk=post.id)
+        messages.success(request, 'Seu comentário foi enviado para moderação.')
+        return redirect('post_details', pk=self.kwargs.get('pk'))
