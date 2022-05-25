@@ -3,6 +3,15 @@ from .models import Comment
 
 
 class FormComment(ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            attr_update = {
+                "class": "form-control"
+            }
+            self.fields[str(field)].widget.attrs.update(attr_update)
+
     def clean(self):
         data = self.cleaned_data
         name = data.get('comment_name')
