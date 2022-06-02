@@ -12,7 +12,8 @@ to send messages to the admin.
 [Django Summernote](https://github.com/summernote/django-summernote)  
 [Pillow](https://pillow.readthedocs.io/en/stable/)  
 [MysqlClient](https://github.com/PyMySQL/mysqlclient)  
-[Django Crispy-Forms](https://github.com/django-crispy-forms/django-crispy-forms)
+[Django Crispy-Forms](https://github.com/django-crispy-forms/django-crispy-forms)  
+[Django Axes](https://github.com/jazzband/django-axes)  
 
 # Setup
 
@@ -21,3 +22,4 @@ to send messages to the admin.
 `pip install pillow`  
 `pip install mysqlclient`  
 `pip install django-crispy-forms`  
+`pip install django-axes`  
