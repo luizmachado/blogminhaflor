@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'categorias',
     'comentarios',
     'django_summernote',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -145,6 +146,9 @@ MESSAGE_TAGS = {
     constants.SUCCESS: 'alert-success',
     constants.INFO: 'alert-info',
 }
+
+# Crispy forms template configuration
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Override database configurations and hide some stuffs like passwords
 try:
