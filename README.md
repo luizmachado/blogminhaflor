@@ -19,3 +19,4 @@ to send messages to the admin.
 `pip install django-summernote  `  
 `pip install pillow`  
 `pip install mysqlclient`  
+`pip install django-crispy-forms`  
