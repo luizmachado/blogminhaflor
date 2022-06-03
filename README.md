@@ -14,6 +14,7 @@ to send messages to the admin.
 [MysqlClient](https://github.com/PyMySQL/mysqlclient)  
 [Django Crispy-Forms](https://github.com/django-crispy-forms/django-crispy-forms)  
 [Django Axes](https://github.com/jazzband/django-axes)  
+[Django Requests](https://requests.readthedocs.io/en/latest/)  
 
 # Setup
 
@@ -23,3 +24,4 @@ to send messages to the admin.
 `pip install mysqlclient`  
 `pip install django-crispy-forms`  
 `pip install django-axes`  
+`pip install requests`  
