@@ -155,7 +155,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Axes configurations
 AXES_FAILURE_LIMIT = 5
-AXES_COOLOFF_TIME = timedelta(minutes=2)
+AXES_COOLOFF_TIME = timedelta(minutes=5)
 AUTHENTICATION_BACKENDS = [
     # AxesBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
     'axes.backends.AxesBackend',
